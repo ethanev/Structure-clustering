@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 from multiprocessing import cpu_count
 from pymol import cmd
+import os
 
 def print_list(list):
     string = ''
@@ -27,7 +28,7 @@ def average_dict(dict, size_dict):
     return dict
 
 def calc_dist_update_mean(new_coord_dict):
-    path = '/home/eevans/pymol/test/'
+    path = '/home/eevans/pymol/9_15/'
     dist_sum = 0
     new_centers = []
     for file in new_coord_dict:
@@ -73,6 +74,7 @@ for i in range(num_of_chunks):
     combined = dict_add(data, combined) 
 combined = average_dict(combined, cluster_lengths)
 f.close()
+os.remove('temp')
 dist_cent_changed, new_centers = calc_dist_update_mean(combined)
 print_list(new_centers)
 #print cluster_lengths
@@ -81,4 +83,9 @@ print_list(new_centers)
 out = open('clusters_new.txt', 'a')
 out.write(str(cluster_lengths))
 out.close()
+
+#used to clear the temp file with the cluster info
+#f = open('temp', 'w')
+###f.write('')
+#f.close()
 

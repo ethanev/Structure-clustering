@@ -25,7 +25,7 @@ def assign_struct_to_center(cluster_centers, data):
         2. a dictionary of cluster mapped to its average coordinates
     '''
     #path to data
-    path = '/home/eevans/pymol/test/'
+    path = '/home/eevans/pymol/9_15/'
     #load cluster centers
     cluster_coords = dict()
     for file in cluster_centers:

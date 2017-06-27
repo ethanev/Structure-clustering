@@ -9,7 +9,7 @@ def print_list(list):
     print string.strip(',')
 
 #path to data
-path = '/home/eevans/pymol/test/'
+path = '/home/eevans/pymol/9_15/'
 
 ##### obtain the cluster centers randomly
 # define how many clusters you want
