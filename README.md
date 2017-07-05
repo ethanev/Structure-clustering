@@ -33,6 +33,6 @@ Alter the path to this file in the five_struct_energy_analysis.py script
 
 Expect output: 
 1. A .csv file containing the best structures of each family with average rmsd to other members of the same family and its energy 
-2. A .csv file listing the average energies of all clusters with size, and top 5 structures with energies
+2. A .csv file listing the average energies of all clusters with size, and top 5 structures with energies labeled 'cent_loweststruct_lowestenergy.csv'
 
 Note: This document as with the entire repository are still a work in progress!
