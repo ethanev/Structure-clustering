@@ -3,6 +3,7 @@ import numpy as np
 from pymol import cmd
 import argparse
 import pickle
+import time
 
 def parse_in():
     '''
@@ -25,7 +26,7 @@ def assign_struct_to_center(cluster_centers, data):
         2. a dictionary of cluster mapped to its average coordinates
     '''
     #path to data
-    path = '/home/eevans/pymol/9_15/'
+    path = '/home/eevans/pymol/8_1/'
     #load cluster centers
     cluster_coords = dict()
     for file in cluster_centers:
@@ -71,8 +72,16 @@ print cluster_sizes
 #    print cluster
 #    print cluster_coords[cluster]
 
-coords_size = open('temp' ,'a')
-pickle.dump(cluster_coords, coords_size)
-pickle.dump(cluster_sizes, coords_size)
-coords_size.close()
-
+not_written = True
+while not_written:
+    try:
+        os.rename('temp', 'tempre')
+        coords_size = open('tempre' ,'a')
+        pickle.dump(cluster_coords, coords_size)
+        pickle.dump(cluster_sizes, coords_size)
+	pickle.dump(clusters, coords_size)
+        coords_size.close()
+        os.rename('tempre', 'temp')
+	not_written = False
+    except:
+	pass

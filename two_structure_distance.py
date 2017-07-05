@@ -32,17 +32,17 @@ def cluster_centers():
     Function is used to do a find the distances between all pairs of centers to get an overall clustering of structures.
     '''
     #load the centers in the proper order
-    dend_ordered_cents_1 = 'Gen3_cluster_sizes_dend_order.txt'
+    dend_ordered_cents_1 = 'new_MP01-C_cluster_sizes_dend_order.txt'
     ordered_cents_1, ordered_cents_1_full = get_cluster_order_data(dend_ordered_cents_1)
     cent_1_label = dend_ordered_cents_1[:-29]
-    dend_ordered_cents_2 = 'Gen8_1_cluster_sizes_dend_order.txt'
+    dend_ordered_cents_2 = 'new_3ala_cluster_sizes_dend_order.txt'
     ordered_cents_2, ordered_cents_2_full = get_cluster_order_data(dend_ordered_cents_2)
     cent_2_label = dend_ordered_cents_2[:-29]
 
 
     #load the PDBs
-    path_1 = '/home/eevans/pymol/Gen3/'
-    path_2 = '/home/eevans/pymol/8_1/'
+    path_1 = '/home/eevans/pymol/MP01-C_cents/'
+    path_2 = '/home/eevans/pymol/3ala_cents/'
     center_list_1 = load_pdbs(path_1)
     center_list_2 = load_pdbs(path_2)
 
@@ -52,7 +52,7 @@ def cluster_centers():
     for center1 in ordered_cents_1:
         j = 0
         for center2 in ordered_cents_2:
-            dist = cmd.align('%s and resi 5-20' %(center2), '%s and resi 5-20' %(center1), cycles=2)
+            dist = cmd.align('%s and resi 6-21' %(center2), '%s and resi 6-21' %(center1), cycles=2)
             distances[i][j] = dist[0]
             j += 1
         i += 1
@@ -62,7 +62,7 @@ distances, ordered_cents_1, ordered_cents_2,cent_1_label,cent_2_label = cluster_
 #heatmap = plt.pcolor(distances)
 #savefig('test.png')
 distances = np.around(distances, decimals=3)
-distances_file = open('distances_81to3.pkl' ,'w')
+distances_file = open('distances_new_MP01cto3ala.pkl' ,'w')
 pickle.dump(distances, distances_file)
 pickle.dump(cent_1_label, distances_file)
 pickle.dump(ordered_cents_1, distances_file)

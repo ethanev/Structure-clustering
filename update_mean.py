@@ -22,13 +22,28 @@ def dict_add(dict1, dict2):
             added[ele] = dict2[ele]
     return added
 
+def combine_dict(dict1, dict2):
+    added = dict()
+    for ele in dict1:
+	if ele not in dict2:
+	    added[ele] = dict1[ele]
+	else:
+	    try:
+	        added[ele] = dict1[ele] + dict2[ele]
+	    except:
+		pass
+    for ele in dict2:
+	if ele not in dict1:
+	    added[ele] = dict2[ele]
+    return added
+
 def average_dict(dict, size_dict):
     for ele in dict:
         dict[ele] = dict[ele]/float(size_dict[ele])
     return dict
 
 def calc_dist_update_mean(new_coord_dict):
-    path = '/home/eevans/pymol/9_15/'
+    path = '/home/eevans/pymol/8_1/'
     dist_sum = 0
     new_centers = []
     for file in new_coord_dict:
@@ -65,13 +80,16 @@ f = open('temp', 'r')
 # load data and get the average cluster center
 combined = dict()
 cluster_lengths = dict()
+cent_to_pdbs = dict()
 for i in range(num_of_chunks):
     data = pickle.load(f)
     data_cluster = pickle.load(f)
+    cent_to_struct_part = pickle.load(f)
     cluster_lengths = dict_add(data_cluster, cluster_lengths)
    # print 'adding in: ', data_cluster, '\n' 
    # print 'combined: ', cluster_lengths, '\n' 
     combined = dict_add(data, combined) 
+    cent_to_pdbs = combine_dict(cent_to_struct_part, cent_to_pdbs)
 combined = average_dict(combined, cluster_lengths)
 f.close()
 os.remove('temp')
@@ -80,9 +98,16 @@ print_list(new_centers)
 #print cluster_lengths
 #print combined
 
-out = open('clusters_new.txt', 'a')
-out.write(str(cluster_lengths))
+out = open('clusters_cent_to_pdb.txt', 'a')
+out.write(str(cent_to_pdbs))
 out.close()
+
+out1 = open('clusters_new.txt', 'a')
+out1.write(str(cluster_lengths))
+cent_to_pdbs_lengths = {ele:len(cent_to_pdbs[ele]) for ele in cent_to_pdbs}
+out1.write(str(cent_to_pdbs_lengths))
+out1.close()
+
 
 #used to clear the temp file with the cluster info
 #f = open('temp', 'w')
