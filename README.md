@@ -20,7 +20,9 @@ Energy analysis is controlled by energy_analysis.sh which calls five_struct_ener
 1. Use the heatmap of a self vs. self plot to determine super families. Then make a .txt file with these families like so:
 
 c.1.000_new_cent,c.2.000_new_cent (This is a single family, no spaces and comma seperated) 
+
 c.4.111_new_cent  (A different family)
+
 c.5.21_new_cent,c.8.190_new_cent (Yet another seperate family)
 
 Alter the path to this file in the five_struct_energy_analysis.py script
