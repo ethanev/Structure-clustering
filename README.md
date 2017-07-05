@@ -16,18 +16,18 @@ Use the output pickle file for running plot_heatmap.py
 
 # Analysis - Energy and picking best structures:
 Energy analysis is controlled by energy_analysis.sh which calls five_struct_energy_analysis and dynamically generates a script to release the best pbds. To use it several things must happen: 
-1. 
-Use the heatmap of a self vs. self plot to determine super families. Then make a .txt file with these families like so:
+
+1. Use the heatmap of a self vs. self plot to determine super families. Then make a .txt file with these families like so:
 c.1.000_new_cent,c.2.000_new_cent # This is a single family, no spaces and comma seperated
 c.4.111_new_cent # A different family
 c.5.21_new_cent,c.8.190_new_cent # Yet another seperate family
 
 Alter the path to this file in the five_struct_energy_analysis.py script
-2. 
-unlock all pdbs into a folder of your choosing ...alter the 'pdb_path' in five_struct_energy_analysis
 
-3. 
-alter all other paths to those related to the sequence of interest. 
+2. unlock all pdbs into a folder of your choosing ...alter the 'pdb_path' in five_struct_energy_analysis
+ 
+3. alter all other paths to those related to the sequence of interest. 
+
 Expect output: 
 1. A .csv file containing the best structures of each family with average rmsd to other members of the same family and its energy 
 2. A .csv file listing the average energies of all clusters with size, and top 5 structures with energies
