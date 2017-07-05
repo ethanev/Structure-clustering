@@ -6,7 +6,7 @@ The entire clustering algorithm is run via singa_batch_full_cluster.sh with no e
   In the current implementation, it requires that you have all of the .pdb files to cluster in their own directory with the path set in       each of the 4 files of the clustering program (update_mean, assign_struct_to_clust, Generate_centers and Generate_data_chunks)
 
 # Analysis - Dendrogram:
-Following clustering one should run the cluster_means_2.sh script in addition to placing the final cycle's center-to-cluster_size dictionary in a file (this is used by the dendrogram plotting script and can be done with 'cat clusters_new.txt' and then copying the final dictionary into a new file - leave in dictionary format!). This makes a pickle file that is needed for making a dendrogram. 
+Following clustering one should run the cluster_means_2.sh script in addition to placing the final cycle's center-to-cluster_size dictionary in a file (this is used by the dendrogram plotting script and can be done with 'cat clusters_new.txt' and then copying the final dictionary into a new file - leave in dictionary format!). This makes a pickle file that is needed for making a dendrogram.  
 Then you can run plot_dendrogram.py (using these two files, the pickle and center-to-size count file) to generate a dendrogram and the input file needed to make a heatmap.
 
 # Analysis - Heatmap:
