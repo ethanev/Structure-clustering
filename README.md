@@ -27,7 +27,8 @@ c.5.21_new_cent,c.8.190_new_cent (Yet another seperate family)
 
 Alter the path to this file in the five_struct_energy_analysis.py script
 
-2. unlock all pdbs into a folder of your choosing ...alter the 'pdb_path' in five_struct_energy_analysis
+2. unlock all pdbs into a folder of your choosing different from the working folder ...alter the 'pdb_path' in five_struct_energy_analysis
+    Make sure ONLY .pdb files are in the pdb directory (remove any other files)
  
 3. alter all other paths to those related to the sequence of interest. 
 
