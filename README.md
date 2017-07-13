@@ -1,3 +1,4 @@
+note: pymol runs in __main__, thus all scripts used with pymol do not use a main() function
 # Structure clustering
 A multicore PDB file clustering algorithm made for a research compute cluster. It will perform a k-means clustering on raw pdb files. This was chosen because established clustering methods inappropriately clustered more similar structures in different clusters (rosetta clustering for example) 
 
