@@ -1,4 +1,5 @@
-note: pymol runs in __main__, thus all scripts used with pymol do not use a main() function
+Note: pymol runs in __main__, thus all scripts used with pymol do not use a main() function
+Note: for the clustering algorithm to run, you must make all your input pdb files with: XXX.pdb.pdb (its pdb has to be there twice). Will fix if needed.
 # Structure clustering
 A multicore PDB file clustering algorithm made for a research compute cluster. It will perform a k-means clustering on raw pdb files. This was chosen because established clustering methods inappropriately clustered more similar structures in different clusters (rosetta clustering for example) 
 
